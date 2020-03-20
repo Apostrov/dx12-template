@@ -14,6 +14,7 @@ public:
 		vertex_buffer_view = {};
 		fence_value = 0;
 		fence_event = nullptr;
+		aspect_ratio = static_cast<float>(height) / static_cast<float>(width);
 	};
 	virtual ~Renderer() {};
 
@@ -22,8 +23,8 @@ public:
 	virtual void OnRender();
 	virtual void OnDestroy();
 
-	virtual void OnKeyDown(UINT8 key) {};
-	virtual void OnKeyUp(UINT8 key) {};
+	virtual void OnKeyDown(UINT8 key) { };
+	virtual void OnKeyUp(UINT8 key) { };
 
 	UINT GetWidth() const { return width; }
 	UINT GetHeight() const { return height; }
@@ -60,6 +61,8 @@ protected:
 	HANDLE fence_event;
 	ComPtr<ID3D12Fence> fence;
 	UINT64 fence_value;
+
+	float aspect_ratio;
 
 	void LoadPipeline();
 	void LoadAssets();
