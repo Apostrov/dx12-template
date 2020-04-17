@@ -18,11 +18,10 @@ public:
 		verteces.clear();
 
 		mwp = XMMatrixIdentity();
-		world = XMMatrixTranslation(0.f, 0.f, 0.f) * XMMatrixScaling(0.5f, 0.5f, 0.5f);
+		world = XMMatrixTranslation(0.f, 0.f, 0.f) * XMMatrixScaling(1.0f, 1.0f, 1.0f);
 		view = XMMatrixIdentity();
-		eye_position = { 0.f, 1.f, 0.f };
-		projection = XMMatrixIdentity();
-		//projection = XMMatrixPerspectiveFovLH(60.f * XM_PI / 180.f, aspect_ratio, 0.001f, 100.f);
+		eye_position = XMVECTOR({ 0.0f, 1.0f, -5.0f });
+		projection = XMMatrixPerspectiveFovLH(60.f * XM_PI / 180.f, aspect_ratio, 0.001f, 100.f);
 
 	};
 	virtual ~Renderer() {};

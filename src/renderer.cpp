@@ -18,7 +18,10 @@ void Renderer::OnUpdate()
 
 	XMVECTOR upDirection = { 0.f, 1.f, 0.f };
 	view = XMMatrixLookAtLH(eye_position, focusPos, upDirection);
-	mwp = projection * view * world;
+	mwp = XMMatrixTranspose(
+		XMMatrixTranspose(projection) *
+		XMMatrixTranspose(view) *
+		XMMatrixTranspose(world));
 	memcpy(constant_buffer_data_begin, &mwp, sizeof(mwp));
 }
 
